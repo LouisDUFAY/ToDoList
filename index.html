@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="Style/style.css">
+    <link rel="stylesheet" href="Style/nav.css">
+    <link rel="stylesheet" href="Style/task.css">
+    <link rel="stylesheet" href="Style/addTaskForm.css">
+    <script type="module" src="Script/main.js" defer></script>
+</head>
+<body>
+    
+    <nav>
+        <div class="navList">
+            <input type="text" placeholder="Rechercher">
+            <ul>
+                <li>A venir</li>
+                <li>Importantes</li>
+                <li>Terminées</li>
+            </ul>
+        </div>
+        
+        <div class="filters">
+            <h1>Filtres</h1>
+            <h3>Date</h3>
+            <h3>Catégories</h3>
+        </div>
+    </nav>
+
+    <div class="container">
+        <form class="addTaskForm">
+            <div class="addTaskContainer">
+                <img class="btnAddTask" src="Ressources/Icons/plus-large-svgrepo-com.svg" height="30px" alt="">
+                <input class="taskTitle" type="text" placeholder="Ajouter une tâche">
+            </div>
+        </form>
+        <div class="tasksContainer">
+            
+        </div>
+    </div>
+</body>
+</html>

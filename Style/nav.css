@@ -1,0 +1,39 @@
+nav {
+    border-right: 1px solid lightgray;
+    min-width: fit-content;
+    width: 300px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+nav ul li{
+    padding: 10px 0;
+}
+
+nav input {
+    width: 100%;
+    margin : 20px 0;
+}
+
+.navList {
+    padding: 15px;
+}
+
+.filters{
+    width: 100%;
+    border-top: 1px solid lightgray;
+}
+
+.filters h3, h1{
+    margin-left: 20px;
+}
