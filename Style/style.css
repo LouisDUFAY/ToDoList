@@ -27,12 +27,20 @@ body {
     filter: brightness(90%);
 }
 
-.btnDelete {
+.btnValidation:active{
+    filter: brightness(70%);
+}
+
+.btnDelete, .btnClose{
     background-color: rgb(255, 141, 121);
     border-radius: 5px;
     margin: 5px 15px;
 }
 
-.btnDelete:hover{
+.btnDelete:hover, .btnClose:hover{
     filter: brightness(90%);
+}
+
+.btnDelete:active, .btnClose:active{
+    filter: brightness(70%);
 }

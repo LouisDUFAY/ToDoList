@@ -1,4 +1,4 @@
-import { tasksList } from "./main.js";
+import { tasksList, editMenu, showEditMenu} from "./main.js";
 
 export function addTask(){
 
@@ -7,10 +7,12 @@ export function addTask(){
     
     //création de la nouvelle tâche
     const task = {
-        //id : tasksList.length + 1,
+        id : tasksList.length,
         title : textInputAddTask.value !== "" ? textInputAddTask.value : "Nouvelle tâche",
         description : null,
         echeance: null,
+        complete : false,
+        
     }
 
     //ajouter la nouvelle tâche à la liste des tâches.
@@ -24,24 +26,29 @@ export function addTask(){
     
 }
 
+//afficher les tâches non terminée à l'écran.
 export function renderTasks(){
     const tasksContainer = document.querySelector(".tasksContainer");
     tasksContainer.innerHTML ="";
     if(tasksList){
-        let index = 0;
         tasksList.forEach(element => {
-            //nouvelle tâche
+
+            if(element.complete === false){
+                //nouvelle tâche
             const newTask = document.createElement("div");
             newTask.classList.add("task");
             //bouton de validation
             const btnValidation = document.createElement("img");
             btnValidation.classList.add("btnValidation");
-            btnValidation.src = "Ressources/Icons/check-svgrepo-com.svg"
+            btnValidation.src = "Ressources/Icons/check-svgrepo-com.svg";
             btnValidation.setAttribute("height", "30px");
+
+            btnValidation.addEventListener("click", ()=> markComplete(element));
 
             //Information sur la tâche
             const taskInfo = document.createElement("div");
             taskInfo.classList.add("taskInfo");
+            taskInfo.addEventListener("click", () => showEditMenu())
             
             const title = document.createElement("div");
             title.textContent = element.title;
@@ -57,6 +64,8 @@ export function renderTasks(){
             btnDelete.classList.add("btnDelete");
             btnDelete.src = "Ressources/Icons/cross-svgrepo-com.svg";
             btnDelete.setAttribute("height", "30px");
+            btnDelete.dataset.id = element.id;
+            btnDelete.addEventListener("click", () => deleteTask(element.id));
 
             tasksContainer.appendChild(newTask);
 
@@ -68,8 +77,7 @@ export function renderTasks(){
             taskInfo.appendChild(echeance);
 
             echeance.appendChild(calendar);
-
-            index++;
+            }
         });
     }
 
@@ -78,4 +86,24 @@ export function renderTasks(){
     
 }
 
-//ajouter un id au boutton supprimer
+//Supprime une tâche
+function deleteTask(id){
+    tasksList.splice(id,1);
+    indexTaskList();
+    renderTasks();
+}
+
+//Marque une tâche comme terminé.
+function markComplete(element){
+    element.complete = true;
+    renderTasks();
+}
+
+//Re-index toutes les tâches
+function indexTaskList(){
+    let index = 0;
+    tasksList.forEach(element => {
+        element.id = index;
+        index++;
+    })
+}

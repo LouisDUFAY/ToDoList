@@ -53,3 +53,7 @@
 .addTaskContainer img:hover{
     filter: brightness(90%);
 }
+
+.addTaskContainer img:active{
+    filter: brightness(70%);
+}

@@ -14,6 +14,10 @@ import{ addTask, renderTasks} from "./task.js";
 const btnAddTask = document.querySelector(".btnAddTask");
 const form = document.querySelector(".addTaskForm");
 
+export const editMenu = document.querySelector(".editContainer");
+const btncloseEditMenu = document.querySelector(".btnClose");
+btncloseEditMenu.addEventListener("click", ()=>closeEditMenu())
+
 export let tasksList = []
 
 btnAddTask.addEventListener("click", () => addTask());
@@ -23,3 +27,13 @@ form.addEventListener("submit", (e) => {
 }, {capture : true})
 
 renderTasks();
+
+export function showEditMenu(){
+    editMenu.style.visibility = "visible";
+    editMenu.style.transform = "translate(0%)";
+}
+
+function closeEditMenu(){
+    editMenu.style.transform = "translate(110%)";
+    //editMenu.style.visibility = "hidden";
+}

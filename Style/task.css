@@ -36,4 +36,13 @@
     padding: 5px 15px;
     border-right: 1px solid lightgray;
     border-left: 1px solid lightgray;
+    transition: background-color 0.2s;
+}
+
+.taskInfo:hover {
+    background-color: rgb(236, 236, 236);
+}
+
+.taskInfo:active {
+    background-color: rgb(221, 221, 221);
 }
