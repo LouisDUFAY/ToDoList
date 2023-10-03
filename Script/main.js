@@ -9,7 +9,7 @@
 //Liste des tâches au centre ==> par défaut par ordre chronologique (tâche à venir)
 //nav bar à gauche pour consulter les tâches à venir, importantes, terminés, 
 //Récupération des différents boutons
-import{ addTask, renderTasks} from "./task.js";
+import{ addTask, renderTasks, closeEditMenu} from "./task.js";
 
 const btnAddTask = document.querySelector(".btnAddTask");
 const form = document.querySelector(".addTaskForm");
@@ -17,6 +17,13 @@ const form = document.querySelector(".addTaskForm");
 export const editMenu = document.querySelector(".editContainer");
 const btncloseEditMenu = document.querySelector(".btnClose");
 btncloseEditMenu.addEventListener("click", ()=>closeEditMenu())
+
+export const editTitle = document.querySelector(".titleContainer input[type='text']");
+export const editDate = document.querySelector(".dateContainer input[type='date']");
+export const editDescription = document.querySelector(".descriptionContainer textarea");
+console.log(editTitle);
+console.log(editDate);
+console.log(editDescription);
 
 export let tasksList = []
 
@@ -27,13 +34,3 @@ form.addEventListener("submit", (e) => {
 }, {capture : true})
 
 renderTasks();
-
-export function showEditMenu(){
-    editMenu.style.visibility = "visible";
-    editMenu.style.transform = "translate(0%)";
-}
-
-function closeEditMenu(){
-    editMenu.style.transform = "translate(110%)";
-    //editMenu.style.visibility = "hidden";
-}

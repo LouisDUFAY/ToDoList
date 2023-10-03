@@ -32,6 +32,7 @@
 .taskInfo {
     box-sizing: border-box;
     width: 100%;
+    min-height: 50px;
     height: 100%;
     padding: 5px 15px;
     border-right: 1px solid lightgray;
@@ -40,7 +41,7 @@
 }
 
 .taskInfo:hover {
-    background-color: rgb(236, 236, 236);
+    cursor: pointer;
 }
 
 .taskInfo:active {

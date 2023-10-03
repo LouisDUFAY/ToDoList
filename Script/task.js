@@ -1,4 +1,4 @@
-import { tasksList, editMenu, showEditMenu} from "./main.js";
+import { tasksList, editMenu, editTitle, editDate, editDescription} from "./main.js";
 
 export function addTask(){
 
@@ -20,10 +20,7 @@ export function addTask(){
     console.log(task)
     renderTasks(tasksList);
     textInputAddTask.value ="";
-    //récupérer le json en local storage ==> parse it
-    //ajouter nouvelle task à cette liste ==> stringify
 
-    
 }
 
 //afficher les tâches non terminée à l'écran.
@@ -43,12 +40,12 @@ export function renderTasks(){
             btnValidation.src = "Ressources/Icons/check-svgrepo-com.svg";
             btnValidation.setAttribute("height", "30px");
 
-            btnValidation.addEventListener("click", ()=> markComplete(element));
+            btnValidation.addEventListener("click", () => markComplete(element));
 
             //Information sur la tâche
             const taskInfo = document.createElement("div");
             taskInfo.classList.add("taskInfo");
-            taskInfo.addEventListener("click", () => showEditMenu())
+            taskInfo.addEventListener("click", () => showEditMenu(element))
             
             const title = document.createElement("div");
             title.textContent = element.title;
@@ -106,4 +103,24 @@ function indexTaskList(){
         element.id = index;
         index++;
     })
+}
+
+//Affiche le menu de modification des tâches
+export function showEditMenu(element){
+    editMenu.style.visibility = "visible";
+    editMenu.style.transform = "translate(0%)";
+    fillEditMenu(element);
+}
+
+//ferme le menu d'édition des tâches
+export function closeEditMenu(){
+    editMenu.style.transform = "translate(110%)";
+}
+
+//pré-rempli le menu d'édition avec les informations de la tâche.
+function fillEditMenu(element){
+
+    editTitle.value = element.title;
+    if(element.echeance) editDate.value = element.echeance;
+    if(element.Description) editDescription.value = element.description;
 }

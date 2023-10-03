@@ -51,9 +51,9 @@
 }
 
 .addTaskContainer img:hover{
-    filter: brightness(90%);
+    cursor: pointer;
 }
 
 .addTaskContainer img:active{
-    filter: brightness(70%);
+    filter: brightness(90%);
 }
