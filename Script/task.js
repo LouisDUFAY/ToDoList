@@ -1,4 +1,4 @@
-import { tasksList, editMenu, editTitle, editDate, editDescription} from "./main.js";
+import { tasksList, editMenu, editTitle, editDate, editDescription, btnEnregistrer} from "./main.js";
 
 export function addTask(){
 
@@ -17,7 +17,6 @@ export function addTask(){
 
     //ajouter la nouvelle tâche à la liste des tâches.
     tasksList.push(task);
-    console.log(task)
     renderTasks(tasksList);
     textInputAddTask.value ="";
 
@@ -121,6 +120,7 @@ export function closeEditMenu(){
 function fillEditMenu(element){
 
     editTitle.value = element.title;
-    if(element.echeance) editDate.value = element.echeance;
-    if(element.Description) editDescription.value = element.description;
+    btnEnregistrer.dataset.elementId = element.id;
+    editDate.value = element.echeance;
+    editDescription.value = element.description;
 }

@@ -9,28 +9,40 @@
 //Liste des tâches au centre ==> par défaut par ordre chronologique (tâche à venir)
 //nav bar à gauche pour consulter les tâches à venir, importantes, terminés, 
 //Récupération des différents boutons
-import{ addTask, renderTasks, closeEditMenu} from "./task.js";
+import{ addTask, renderTasks, closeEditMenu, } from "./task.js";
 
 const btnAddTask = document.querySelector(".btnAddTask");
 const form = document.querySelector(".addTaskForm");
 
 export const editMenu = document.querySelector(".editContainer");
 const btncloseEditMenu = document.querySelector(".btnClose");
-btncloseEditMenu.addEventListener("click", ()=>closeEditMenu())
+btncloseEditMenu.addEventListener("click", ()=>closeEditMenu());
 
+//Champ d'edition des tâches
 export const editTitle = document.querySelector(".titleContainer input[type='text']");
 export const editDate = document.querySelector(".dateContainer input[type='date']");
 export const editDescription = document.querySelector(".descriptionContainer textarea");
-console.log(editTitle);
-console.log(editDate);
-console.log(editDescription);
 
-export let tasksList = []
+export let tasksList = [];
+
+//Sauvegarde des modifications
+export const btnEnregistrer = document.querySelector(".btnEnregistrer");
+btnEnregistrer.addEventListener("click", (e) => {
+    let elementId = e.target.dataset.elementId;
+    let elementToEdit = tasksList.find((task) => task.id === parseInt(elementId));
+    
+    editTitle.value !== "" ? elementToEdit.title = editTitle.value : elementToEdit.title = "--";
+    editDate.value !== null ? elementToEdit.echeance = editDate.value : elementToEdit.echeance = elementToEdit.echeance;
+    editDescription.value !== "" ? elementToEdit.description = editDescription.value : elementToEdit.description = elementToEdit.description;
+    
+    renderTasks();
+});
+
 
 btnAddTask.addEventListener("click", () => addTask());
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     addTask();
-}, {capture : true})
+}, {capture : true});
 
 renderTasks();
