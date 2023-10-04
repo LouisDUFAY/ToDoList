@@ -30,49 +30,56 @@ export function renderTasks(){
         tasksList.forEach(element => {
 
             if(element.complete === false){
+
                 //nouvelle tâche
-            const newTask = document.createElement("div");
-            newTask.classList.add("task");
-            //bouton de validation
-            const btnValidation = document.createElement("img");
-            btnValidation.classList.add("btnValidation");
-            btnValidation.src = "Ressources/Icons/check-svgrepo-com.svg";
-            btnValidation.setAttribute("height", "30px");
+                const newTask = document.createElement("div");
+                newTask.classList.add("task");
+                //bouton de validation
+                const btnValidation = document.createElement("img");
+                btnValidation.classList.add("btnValidation");
+                btnValidation.src = "Ressources/Icons/check-svgrepo-com.svg";
+                btnValidation.setAttribute("height", "30px");
+                
+                btnValidation.addEventListener("click", () => markComplete(element));
 
-            btnValidation.addEventListener("click", () => markComplete(element));
+                //Information sur la tâche
+                const taskInfo = document.createElement("div");
+                taskInfo.classList.add("taskInfo");
+                taskInfo.addEventListener("click", () => showEditMenu(element))
+                
+                const title = document.createElement("div");
+                title.textContent = element.title;
 
-            //Information sur la tâche
-            const taskInfo = document.createElement("div");
-            taskInfo.classList.add("taskInfo");
-            taskInfo.addEventListener("click", () => showEditMenu(element))
-            
-            const title = document.createElement("div");
-            title.textContent = element.title;
+                const echeance = document.createElement("div");
+                echeance.classList.add("echeanceContainer");
 
-            const echeance = document.createElement("div");
-            echeance.classList.add("echeanceContainer");
+                const calendar = document.createElement("img");
+                calendar.src = "Ressources/Icons/calendar-svgrepo-com.svg";
+                calendar.setAttribute("height", "12px");
 
-            const calendar = document.createElement("img");
-            calendar.src = "Ressources/Icons/calendar-svgrepo-com.svg";
-            calendar.setAttribute("height", "10px");
+                const dateEcheance = document.createElement("p")
+                dateEcheance.innerText = element.echeance;
+                
 
-            const btnDelete = document.createElement("img");
-            btnDelete.classList.add("btnDelete");
-            btnDelete.src = "Ressources/Icons/cross-svgrepo-com.svg";
-            btnDelete.setAttribute("height", "30px");
-            btnDelete.dataset.id = element.id;
-            btnDelete.addEventListener("click", () => deleteTask(element.id));
+                const btnDelete = document.createElement("img");
+                btnDelete.classList.add("btnDelete");
+                btnDelete.src = "Ressources/Icons/cross-svgrepo-com.svg";
+                btnDelete.setAttribute("height", "30px");
+                btnDelete.dataset.id = element.id;
+                btnDelete.addEventListener("click", () => deleteTask(element.id));
 
-            tasksContainer.appendChild(newTask);
+                tasksContainer.appendChild(newTask);
 
-            newTask.appendChild(btnValidation);
-            newTask.appendChild(taskInfo);
-            newTask.appendChild(btnDelete);
+                newTask.appendChild(btnValidation);
+                newTask.appendChild(taskInfo);
+                newTask.appendChild(btnDelete);
 
-            taskInfo.appendChild(title);
-            taskInfo.appendChild(echeance);
+                taskInfo.appendChild(title);
+                taskInfo.appendChild(echeance);
 
-            echeance.appendChild(calendar);
+                echeance.appendChild(calendar);
+                echeance.appendChild(dateEcheance);
+
             }
         });
     }

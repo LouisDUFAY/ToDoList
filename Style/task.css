@@ -40,10 +40,26 @@
     transition: background-color 0.2s;
 }
 
+.taskInfo div{
+    height: 20px;
+}
+
 .taskInfo:hover {
     cursor: pointer;
 }
 
 .taskInfo:active {
     background-color: rgb(221, 221, 221);
+}
+
+.echeanceContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.echeanceContainer p{
+    margin: 0;
 }
