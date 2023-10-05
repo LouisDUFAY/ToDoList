@@ -16,15 +16,37 @@
     <nav>
         <div class="navList">
             <input type="text" placeholder="Rechercher">
-            <ul>
-                <li>A venir</li>
-                <li>Importantes</li>
-                <li>Terminées</li>
-            </ul>
         </div>
         
         <div class="filters">
             <h1>Filtres</h1>
+            <div class="radioTileGroup">
+                <h3>Statut</h3>
+                <div class="inputContainer">
+                    <input type="radio" id="all" name="statut" checked>
+                    <div class="radioTile">
+                        <label for="all">Toutes les tâches</label>
+                    </div>
+                </div>
+                <div class="inputContainer">
+                    <input type="radio" id="aVenir" name="statut">
+                    <div class="radioTile">
+                        <label for="aVenir">A venir</label>
+                    </div>
+                </div>
+                <div class="inputContainer">
+                    <input type="radio" id="Importantes" name="statut">
+                    <div class="radioTile">
+                        <label for="Importantes">Importantes</label>
+                    </div>
+                </div>
+                <div class="inputContainer">
+                    <input type="radio" id="Terminées" name="statut">
+                    <div class="radioTile">
+                        <label for="Terminées">Terminées</label>
+                    </div>
+                </div>
+            </div>
             <h3>Date</h3>
             <h3>Catégories</h3>
         </div>
