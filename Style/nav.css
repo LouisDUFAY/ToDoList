@@ -44,6 +44,8 @@ nav input {
     display: flex;
     flex-direction: column;
     padding: 20px;
+    border-bottom: 1px solid lightgray;
+    gap: 10px;
 }
 
 .radioTileGroup h3{
@@ -52,7 +54,7 @@ nav input {
 
 .inputContainer{
     position: relative;
-    height: 50px;
+    height: 35px;
     width: 100%;
 }
 
@@ -68,12 +70,39 @@ nav input {
 
 .inputContainer .radioTile{
     display: flex;
-    justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
+    padding-left: 5px;
+    transition: color 0.1s;
+    background-color: lightgray;
+    border-bottom: 3px solid gray;
+    border-radius: 5px;
+}
+
+input + .radioTile::after{
+    position: absolute;
+    content: "";
+    height: 0px;
+    width: 0px;
+    background-color: transparent;
 }
 
 input:checked + .radioTile {
-    background-color: red;
+    position: relative;
+    border: none;
+    background-color: rgb(160, 160, 160);
+    border-top: 3px solid gray;
+    color: white;
+}
+
+input:checked + .radioTile::after{
+
+    position: absolute;
+    left: -8px;
+    content: "";
+    height: 50%;
+    width: 5px;
+    background-color: gray;
+    border-radius: 5px;
 }
