@@ -1,5 +1,3 @@
-// créer, supprimer, modifier tâches
-// tâche : Titre, description, échéance.
 // Marqué les tâches comme importantes, terminées
 // la couleur du fond de la tâche devient rouge quand l'échéance approche
 // Trier les tâches par date d'échéance, de la plus proche à la plus lointaine.
@@ -22,10 +20,16 @@ btncloseEditMenu.addEventListener("click", ()=>closeEditMenu());
 export const editTitle = document.querySelector(".titleContainer input[type='text']");
 export const editDate = document.querySelector(".dateContainer input[type='date']");
 export const editDescription = document.querySelector(".descriptionContainer textarea");
+const inputContainer = document.querySelectorAll(".inputContainer")
 
 export let tasksList = [];
 
-//Sauvegarde des modifications
+export let taskLists = {
+    all : [],
+    termine : tasksList.filter((task) => task.complete === Boolean(true)),
+}
+
+//Sauvegarde des modifications via le formulaire de modification
 export const btnEnregistrer = document.querySelector(".btnEnregistrer");
 btnEnregistrer.addEventListener("click", (e) => {
     let elementId = e.target.dataset.elementId;
@@ -45,4 +49,13 @@ form.addEventListener("submit", (e) => {
     addTask();
 }, {capture : true});
 
-renderTasks();
+
+//Bouton filtres
+inputContainer.forEach((element) => {
+    element.addEventListener("click", (e) => {
+        console.log(e.target.id)
+    })
+})
+
+
+renderTasks(tasksList);

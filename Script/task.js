@@ -1,4 +1,4 @@
-import { tasksList, editMenu, editTitle, editDate, editDescription, btnEnregistrer} from "./main.js";
+import { tasksList, editMenu, editTitle, editDate, editDescription, btnEnregistrer, taskLists} from "./main.js";
 
 export function addTask(){
 
@@ -11,7 +11,7 @@ export function addTask(){
         title : textInputAddTask.value !== "" ? textInputAddTask.value : "Nouvelle tâche",
         description : null,
         echeance: null,
-        complete : false,
+        complete : Boolean(false),
         
     }
 
@@ -23,11 +23,11 @@ export function addTask(){
 }
 
 //afficher les tâches non terminée à l'écran.
-export function renderTasks(){
+export function renderTasks(tasksToRender){
     const tasksContainer = document.querySelector(".tasksContainer");
     tasksContainer.innerHTML ="";
-    if(tasksList){
-        tasksList.forEach(element => {
+    if(tasksToRender){
+        tasksToRender.forEach(element => {
 
             if(element.complete === false){
 
@@ -85,7 +85,8 @@ export function renderTasks(){
     }
 
     
-    console.log(tasksList)
+    console.log(tasksToRender);
+    console.log(taskLists.termine);
     
 }
 
@@ -93,13 +94,13 @@ export function renderTasks(){
 function deleteTask(id){
     tasksList.splice(id,1);
     indexTaskList();
-    renderTasks();
+    renderTasks(tasksList);
 }
 
 //Marque une tâche comme terminé.
 function markComplete(element){
     element.complete = true;
-    renderTasks();
+    renderTasks(tasksList);
 }
 
 //Re-index toutes les tâches

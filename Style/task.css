@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    flex-grow: 1;
 }
 
 .task{
@@ -16,6 +17,20 @@
     border-top-left-radius: 5px;
     justify-content: space-between;
     align-items: center;
+}
+
+.task:last-child{
+    animation: slideDown 0.2s;
+}
+
+@keyframes slideDown {
+    0%{
+        transform: translateY(-10px);
+    }
+
+    100%{
+        transform: translateY(0px);
+    }
 }
 
 .task::after {
