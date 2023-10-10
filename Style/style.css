@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;500;600;700;800&display=swap');
 
+:root{
+    --veryLightGray : rgb(238, 238, 238);
+}
+
 * {
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
@@ -16,7 +20,7 @@ body {
     display: flex;
     flex-grow: 1;
     flex-direction: column;
-    background-color: rgb(238, 238, 238);
+    background-color: var(--veryLightGray);
     margin-left: 300px;
     width: 100vw;
 }

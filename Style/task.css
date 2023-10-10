@@ -7,6 +7,22 @@
     flex-grow: 1;
 }
 
+.tasksContainer.complete{
+    position: relative;
+    border-top: 2px solid lightgray;
+    height: 100px;
+}
+
+.tasksContainer.complete::before{
+    position: absolute;
+    content: "Terminées";
+    transform-origin: center;
+    top: -10px;
+    background-color: var(--veryLightGray);
+    padding: 0px 10px;
+    font-size: 16px;
+}
+
 .task{
     position: relative;
     display: flex;

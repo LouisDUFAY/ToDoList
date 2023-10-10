@@ -26,14 +26,14 @@ export let tasksList = [];
 
 export let taskLists = {
     all : [],
-    termine : tasksList.filter((task) => task.complete === Boolean(true)),
+    termine : [],
 }
 
 //Sauvegarde des modifications via le formulaire de modification
 export const btnEnregistrer = document.querySelector(".btnEnregistrer");
 btnEnregistrer.addEventListener("click", (e) => {
     let elementId = e.target.dataset.elementId;
-    let elementToEdit = tasksList.find((task) => task.id === parseInt(elementId));
+    let elementToEdit = taskLists.all.find((task) => task.id === parseInt(elementId));
     
     editTitle.value !== "" ? elementToEdit.title = editTitle.value : elementToEdit.title = "--";
     editDate.value !== null ? elementToEdit.echeance = editDate.value : elementToEdit.echeance = elementToEdit.echeance;
@@ -58,4 +58,4 @@ inputContainer.forEach((element) => {
 })
 
 
-renderTasks(tasksList);
+renderTasks(taskLists.all);
