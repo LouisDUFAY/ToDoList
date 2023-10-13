@@ -27,25 +27,43 @@ export let tasksList = [];
 export let taskLists = {
     all : [],
     termine : [],
+    aVenir : [],
+    importantes : [],
+}
+
+export let activeTaskList = taskLists.all;
+export let lastActiveTaskList = activeTaskList;
+let lastId = "all";
+
+export function editLastActiveTaskList(value){
+    lastActiveTaskList = value;
 }
 
 //Sauvegarde des modifications via le formulaire de modification
 export const btnEnregistrer = document.querySelector(".btnEnregistrer");
 btnEnregistrer.addEventListener("click", (e) => {
     let elementId = e.target.dataset.elementId;
-    let elementToEdit = taskLists.all.find((task) => task.id === parseInt(elementId));
+    let elementToEdit = activeTaskList.find((task) => task.id === parseInt(elementId));
     
     editTitle.value !== "" ? elementToEdit.title = editTitle.value : elementToEdit.title = "--";
     editDate.value !== null ? elementToEdit.echeance = editDate.value : elementToEdit.echeance = elementToEdit.echeance;
     editDescription.value !== "" ? elementToEdit.description = editDescription.value : elementToEdit.description = elementToEdit.description;
     
-    renderTasks();
+    renderTasks(activeTaskList);
 });
 
 
-btnAddTask.addEventListener("click", () => addTask());
+btnAddTask.addEventListener("click", () => {
+    if(lastId === "all"){
+        activeTaskList = taskLists.all;
+    }
+    addTask()
+});
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+    if(lastId === "all"){
+        activeTaskList = taskLists.all;
+    }
     addTask();
 }, {capture : true});
 
@@ -53,9 +71,30 @@ form.addEventListener("submit", (e) => {
 //Bouton filtres
 inputContainer.forEach((element) => {
     element.addEventListener("click", (e) => {
-        console.log(e.target.id)
+
+        switch (e.target.id) {
+            case "all":
+                lastId = "all";
+                activeTaskList = taskLists.all;
+                break;
+            case "aVenir":
+                lastId = "aVenir"
+                activeTaskList = taskLists.aVenir;
+                break;
+            case "importantes":
+                lastId = "importantes";
+                activeTaskList = taskLists.importantes;
+                break;
+            default:
+                break;
+        }
+
+        renderTasks(activeTaskList);
+
+        console.log(e.target.id);
+        
     })
 })
 
-
-renderTasks(taskLists.all);
+console.log(taskLists.all, "yo");
+renderTasks(activeTaskList);

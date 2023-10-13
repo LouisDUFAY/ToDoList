@@ -4,13 +4,17 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    flex-grow: 1;
 }
 
 .tasksContainer.complete{
     position: relative;
     border-top: 2px solid lightgray;
-    height: 100px;
+    padding: 20px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1;
 }
 
 .tasksContainer.complete::before{
@@ -39,7 +43,7 @@
     animation: slideDown 0.2s;
 }
 
-@keyframes slideDown {
+/* @keyframes slideDown {
     0%{
         transform: translateY(-10px);
     }
@@ -47,7 +51,7 @@
     100%{
         transform: translateY(0px);
     }
-}
+} */
 
 .task::after {
     content: "";
