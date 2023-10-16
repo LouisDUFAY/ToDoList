@@ -78,7 +78,6 @@ export function renderTasks(tasksToRender){
 
             const dateEcheance = document.createElement("p")
             dateEcheance.innerText = element.echeance;
-            
 
             const btnDelete = document.createElement("img");
             btnDelete.classList.add("btnDelete");
